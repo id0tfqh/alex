@@ -1,0 +1,23 @@
+# Update system
+---
+- name: Update | Upgrade all packages
+  become: true
+  become_user: root
+  yum:
+    name: '*'
+    state: latest
+    update_cache: yes
+
+# Install additional soft
+- name: Update | Install additional software
+  become: true
+  become_user: root
+  yum:
+    name: "{{ soft_list }}"
+
+# Set hostname
+- name: Update | Set server hostname
+  become: true
+  become_user: root
+  hostname:
+    name: "{{ hostname }}"

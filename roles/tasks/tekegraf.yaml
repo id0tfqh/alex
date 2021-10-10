@@ -1,0 +1,26 @@
+# Install Telegraf
+---
+
+- name: Telegraf | 
+  become: true
+  becom_user: root
+  yum: name="{{ telegraf }}"
+
+- name: Telegraf | Copy config
+  become: true
+  becom_user: root
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.confd/nginx.conf
+    owner: root
+    group: root
+    mode: 0644
+  register: config_result
+
+- name: Telegraf | Restart service if configs were changed
+  become: true
+  becom_user: root
+  systemd:
+    name: nginx
+    state: restarted
+    daemon_reload: yes

@@ -1,0 +1,53 @@
+# Make software RAID array
+---
+- name: Array | List devices
+  shell: lsblk -ampf
+
+- name: Array | Creating Array
+  become: true
+  become_user: root
+  shell: "yes | mdadm --create --verbose /dev/{{ array_name }} --level={{ raid_level }} --raid-devices={{ devices|count }} {{ devices| join (' ') }}"
+  register: "array_created"
+
+- name: Array | Check the progress
+  become: true
+  become_user: root
+  shell: cat /proc.mdstat
+
+- name: Array | View RAID information
+  become: true
+  become_user: root
+  shell: mdadm --detail --scan
+  register: "array_details"
+
+- name: Array | Creating array Filesystem
+  become: true
+  become_user: root
+  filesystem:
+    fstype: "{{ fs_type }}"
+    dev: "/dev/{{ array_name }}"
+
+- name: Array | Get data drive UUID
+  become: true
+  become_user: root
+  shell: "blkid -o value -s UUID static"
+  register: disk_uuid
+
+- name: Array | Create mount point
+  become: true
+  become_user: root
+  mount:
+    path: "{{ work_dir }}"
+    src: "UUID={{ disk_uuid.stdout }}"
+    fstype: "{{ fs_type }}"
+    state: mounted
+
+- name: Array | Create work directory
+  become: true
+  become_user: root
+  file:
+    path: "{{ work_dir }}/www"
+    state: directory
+    owner: "{{ work_user }}"
+    group: "{{ work_user }}"
+    mode: 0775

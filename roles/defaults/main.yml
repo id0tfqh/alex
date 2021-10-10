@@ -1,0 +1,54 @@
+# static/defaults/main.yml
+---
+
+# Hostname server
+hostname: "***"  # please type hostname your server
+
+# Level's raid array
+array_lavel: 1  # it may be 1, 5, 6, 10 (default 1)
+
+# Array name
+array_name: "md0"
+
+# Device name for raid massive
+devices:        # look your device name:  lsblk -ampf
+  - "/dev/sd***"    # /dev/sdb
+  - "/dev/sd***"    # /dev/sdc
+
+# Type file system for working directory
+fs_type: "ext4"   # don't use xfs, btrfs type
+
+# A working directory name
+work_dir: "/srv"   # only text symbols
+
+# URL for nginx
+nginx: "http://nginx.org/packages/centos/7/x86_64/RPMS/nginx-1.20.1-1.el7.ngx.x86_64.rpm"   # For Centos 7 !!!
+#nginx_repo: "http://nginx.org/packages/centos/8/x86_64/RPMS/nginx-1.20.1-1.el8.ngx.x86_64.rpm"   # For Centos 8 !!!
+
+# URL for telegraf
+telegraf: "https://repos.influxdata.com/rhel/7/x86_64/stable/telegraf-1.20.2-1.x86_64.rpm"    # For Centos 7 !!!
+#telegraf_repo: "https://repos.influxdata.com/rhel/8/x86_64/stable/telegraf-1.20.2-1.x86_64.rpm"    # For Centos 8 !!!
+
+# Users and creds
+# Working user
+work_user: "move_static"
+work_password: "***"   # please type password for working user
+
+# Creds for first access
+first_user: root
+first_password: "***"   # Plese change this password after install!!!
+
+# List additional software
+soft_list:
+  - mc
+  - mdadm
+  - fdisk
+  - e4fsprogs
+
+# Configure Linux sysctl
+somaxconn: 8192
+fin_timeout: 30
+keepalive_intvl: 30
+keepalive_time: 240
+max_syn_backlog: 8192
+keepalive_probes: 6

@@ -1,0 +1,22 @@
+# Make user
+---
+- name: User | Make user
+  become: yes
+  become_user: root
+  user:
+    name: "{{ work_user }}"
+    group: "{{ work_user }}"
+    comment: "{{ work_user }}"
+    shell: /bin/bash
+    groups: wheel
+    password: "{{ work_password }}"
+    append: yes
+
+- name: User | Make SSH key
+  become: yes
+  become_user: root
+  user:
+    name: "{{ work_user }}"
+    generate_ssh_key: yes
+    ssh_key_bits: 2048
+    ssh_key_file: "/home/{{ work_user }}/.ssh/id_rsa"
