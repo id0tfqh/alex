@@ -10,8 +10,8 @@
   become: true
   becom_user: root
   template:
-    src: nginx.conf.j2
-    dest: /etc/nginx/nginx.confd/nginx.conf
+    src: telegraf.conf.j2
+    dest: /etc/***
     owner: root
     group: root
     mode: 0644
@@ -21,6 +21,6 @@
   become: true
   becom_user: root
   systemd:
-    name: nginx
+    name: telegraf***
     state: restarted
     daemon_reload: yes

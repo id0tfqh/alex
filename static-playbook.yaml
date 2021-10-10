@@ -1,6 +1,0 @@
----
-- hosts: all
-  tasks:
-    - name: import component role
-      include_role: 
-        name: system
