@@ -27,7 +27,7 @@ server {
 
     output_buffers 1 256k;
 
-    root /srv/wwww/{{ hostname }}.move.ru;
+    root /www/{{ hostname }}.move.ru;
     error_page 404 /noimgitem.png;
 
     location / {return 302 https://move.ru;}
