@@ -1,6 +1,5 @@
 ---
 # tasks file for static server
-
 - import_tasks: update.yaml
   tags: [install]
 

@@ -32,11 +32,11 @@ telegraf: "https://repos.influxdata.com/rhel/7/x86_64/stable/telegraf-1.20.2-1.x
 # Users and creds
 # Working user
 work_user: "move_static"
-work_password: "***""   # please type password for working user
+work_password: "D@rkStaticForce01"   # please type password for working user
 
 # Creds for first access
 first_user: root
-first_password: "***"   # Plese change this password after install!!!
+first_password: ""   # Plese change this password after install!!!
 
 # List additional software
 soft_list:

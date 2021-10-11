@@ -1,6 +1,5 @@
 # Configure server
 ---
-
 - name: Configure sysctl | Set statement specifying the default number of listening sockets
   become: true
   become_user: root

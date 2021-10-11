@@ -1,6 +1,5 @@
 # Install Telegraf
 ---
-
 - name: Telegraf | 
   become: true
   becom_user: root
@@ -11,7 +10,7 @@
   becom_user: root
   template:
     src: telegraf.conf.j2
-    dest: /etc/***
+    dest: /etc/telegraf
     owner: root
     group: root
     mode: 0644
@@ -21,6 +20,6 @@
   become: true
   becom_user: root
   systemd:
-    name: telegraf***
+    name: telegraf
     state: restarted
     daemon_reload: yes

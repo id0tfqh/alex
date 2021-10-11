@@ -1,14 +1,13 @@
 # Install and configure nginx
 ---
-
 - name: Nginx | Install packages
-  become: true
-  becom_user: root
+#  become: true
+#  becom_user: root
   yum: name="{{ nginx }}"
 
 - name: Nginx | Copy config
-  become: true
-  becom_user: root
+#  become: true
+#  becom_user: root
   template:
     src: nginx.conf.j2
     dest: /etc/nginx/
@@ -18,8 +17,8 @@
   register: config_result
 
 - name: Nginx | Restart service if configs were changed
-  become: true
-  becom_user: root
+#  become: true
+#  becom_user: root
   systemd:
     name: nginx
     state: restarted
