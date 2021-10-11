@@ -2,7 +2,7 @@
 ---
 
 # Hostname server
-hostname: "***"  # please type hostname your server
+hostname: "i11"  # please type hostname your server
 
 # Level's raid array
 array_lavel: 1  # it may be 1, 5, 6, 10 (default 1)
@@ -12,14 +12,14 @@ array_name: "md0"
 
 # Device name for raid massive
 devices:        # look your device name:  lsblk -ampf
-  - "/dev/sd***"    # /dev/sdb
-  - "/dev/sd***"    # /dev/sdc
+  - "/dev/sda"    # /dev/sdb
+  - "/dev/sdb"    # /dev/sdc
 
 # Type file system for working directory
 fs_type: "ext4"   # don't use xfs, btrfs type
 
 # A working directory name
-work_dir: "/srv"   # only text symbols
+work_dir: "/www"   # only text symbols
 
 # URL for nginx
 nginx: "http://nginx.org/packages/centos/7/x86_64/RPMS/nginx-1.20.1-1.el7.ngx.x86_64.rpm"   # For Centos 7 !!!
@@ -32,7 +32,7 @@ telegraf: "https://repos.influxdata.com/rhel/7/x86_64/stable/telegraf-1.20.2-1.x
 # Users and creds
 # Working user
 work_user: "move_static"
-work_password: "***"   # please type password for working user
+work_password: "***""   # please type password for working user
 
 # Creds for first access
 first_user: root

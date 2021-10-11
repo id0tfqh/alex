@@ -7,8 +7,8 @@
 - import_tasks: user.yaml
   tags: [user]
 
-- import_tasks: make_array.yaml
-  tags: [array]
+##- import_tasks: make_array.yaml
+##  tags: [array]
 
 - import_tasks: conf_sysctl.yaml
   tags: [systemctl]
