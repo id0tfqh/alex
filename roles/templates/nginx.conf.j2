@@ -1,1 +1,41 @@
 #nginx.conf
+
+include module.inc.conf;
+include server.inc.conf;
+
+http {
+
+    include mime.types;
+    default_type application/octet-stream;
+
+    log_format main '$remote_addr - $remote_user [$time_local] "$request" '
+                    '$status $body_bytes_sent "$http_referer" '
+                    '"$http_user_agent" $upstream_addr $upstream_response_time $request_time $host';
+
+    sendfile on;
+    tcp_nopush on;
+    tcp_nodelay on;
+    server_tokens off;
+    reset_timedout_connection on;
+    keepalive_timeout 70;
+    large_client_header_buffers 8 8k;
+    server_names_hash_bucket_size 128;
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_session_timeout 3h;
+    ssl_session_cache shared:SSL:20m;
+    ssl_session_tickets off;
+
+    ssl_certificate         /etc/ssl/move.crt;
+    ssl_certificate_key     /etc/ssl/private/move.key;
+
+    gzip on;
+    gzip_proxied any;
+    gzip_types text/plain application/atom+xml text/xml application/xml application/javascript application/x-javascript text/javascript text/css text/json application/json;
+    gzip_min_length 1024;
+    gzip_comp_level 3;
+
+#    include default-server.inc.conf;
+#    include vhost-default.inc.conf;
+    include vhosts.d/*.conf;
+}
