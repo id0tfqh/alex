@@ -5,7 +5,6 @@
   become_user: root
   user:
     name: "{{ work_user }}"
-    group: "{{ work_user }}"
     comment: "{{ work_user }}"
     shell: /bin/bash
     groups: wheel

@@ -22,12 +22,12 @@ fs_type: "ext4"   # don't use xfs, btrfs type
 work_dir: "/www"   # only text symbols
 
 # URL for nginx
-nginx: "http://nginx.org/packages/centos/7/x86_64/RPMS/nginx-1.20.1-1.el7.ngx.x86_64.rpm"   # For Centos 7 !!!
-#nginx_repo: "http://nginx.org/packages/centos/8/x86_64/RPMS/nginx-1.20.1-1.el8.ngx.x86_64.rpm"   # For Centos 8 !!!
+#nginx: "http://nginx.org/packages/centos/7/x86_64/RPMS/nginx-1.20.1-1.el7.ngx.x86_64.rpm"   # For Centos 7 !!!
+nginx: "http://nginx.org/packages/centos/8/x86_64/RPMS/nginx-1.20.1-1.el8.ngx.x86_64.rpm"   # For Centos 8 !!!
 
 # URL for telegraf
-telegraf: "https://repos.influxdata.com/rhel/7/x86_64/stable/telegraf-1.20.2-1.x86_64.rpm"    # For Centos 7 !!!
-#telegraf_repo: "https://repos.influxdata.com/rhel/8/x86_64/stable/telegraf-1.20.2-1.x86_64.rpm"    # For Centos 8 !!!
+#telegraf: "https://repos.influxdata.com/rhel/7/x86_64/stable/telegraf-1.20.2-1.x86_64.rpm"    # For Centos 7 !!!
+telegraf: "https://repos.influxdata.com/rhel/8/x86_64/stable/telegraf-1.20.2-1.x86_64.rpm"    # For Centos 8 !!!
 
 # Users and creds
 # Working user

@@ -1,13 +1,9 @@
 # Install Telegraf
 ---
 - name: Telegraf | Install packages
-#  become: true
-#  becom_user: root
   yum: name="{{ telegraf }}"
 
 - name: Telegraf | Copy config
-#  become: true
-#  becom_user: root
   template:
     src: telegraf.conf.j2
     dest: /etc/telegraf/
@@ -17,8 +13,6 @@
   register: config_result
 
 - name: Telegraf | Restart service if configs were changed
-#  become: true
-#  becom_user: root
   systemd:
     name: telegraf
     state: restarted
