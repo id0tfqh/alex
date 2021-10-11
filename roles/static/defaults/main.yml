@@ -42,8 +42,6 @@ first_password: ""   # Plese change this password after install!!!
 soft_list:
   - mc
   - mdadm
-  - fdisk
-  - e4fsprogs
 
 # Configure Linux sysctl
 somaxconn: 8192
