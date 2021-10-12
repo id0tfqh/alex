@@ -42,11 +42,12 @@ first_password: ""   # Plese change this password after install!!!
 soft_list:
   - mc
   - mdadm
+  - htop
 
 # Configure Linux sysctl
-somaxconn: 8192
-fin_timeout: 30
-keepalive_intvl: 30
-keepalive_time: 240
-max_syn_backlog: 8192
-keepalive_probes: 6
+somaxconn: '8192'
+fin_timeout: '30'
+keepalive_intvl: '30'
+keepalive_time: '240'
+max_syn_backlog: '8192'
+keepalive_probes: '6'

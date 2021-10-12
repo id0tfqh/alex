@@ -5,14 +5,46 @@
     name: "{{ nginx }}"
     state: present
 
-- name: Nginx | Copy config
+- name: Nginx | Rename default config nginx_server
+  command: mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.default
+  register: old_config
+
+- name: Nginx | Remove default config
+  file:
+    path: /etc/nginx/conf.d/default.conf
+    state: absent
+
+- name: Nginx | Copy config nginx_server
   template:
     src: nginx.conf.j2
-    dest: /etc/nginx/
+    dest: /etc/nginx/nginx.conf
     owner: root
     group: root
-    mode: 0644
-  register: config_result
+    mode: '0644'
+  register: ngx_config_server
+
+- name: Nginx | Copy configs
+  template:
+    src: move.ru.conf.j2
+    dest: "/etc/nginx/conf.d/{{ hostname }}.move.ru.conf"
+
+- name: Nginx | Copy module.inc
+  template:
+    src: module.inc.conf.j2
+    dest: /etc/nginx/modules/module.inc.conf
+
+- name: Nginx | Copy server.inc
+  template:
+    src: server.inc.conf.j2
+    dest: /etc/nginx/modules/server.inc.conf
+
+- name: Nginx | Make work directory
+  file:
+    path: "/www/{{ hostname }}"
+    state: directory
+    owner: nginx
+    group: nginx
+    mode: '0755'
 
 - name: Nginx | Restart service if configs were changed
   systemd:

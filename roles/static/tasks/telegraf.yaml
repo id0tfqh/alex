@@ -10,7 +10,7 @@
     owner: root
     group: root
     mode: 0644
-  register: config_result
+  register: tlg_config_result
 
 - name: Telegraf | Restart service if configs were changed
   systemd:
