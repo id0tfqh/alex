@@ -6,7 +6,7 @@
 - name: Telegraf | Copy config
   template:
     src: telegraf.conf.j2
-    dest: /etc/telegraf/
+    dest: /etc/telegraf/telegraf.conf
     owner: root
     group: root
     mode: 0644

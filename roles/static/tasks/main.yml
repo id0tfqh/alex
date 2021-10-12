@@ -6,6 +6,7 @@
 - import_tasks: user.yaml
   tags: [user]
 
+##  This part only for make new array
 ##- import_tasks: make_array.yaml
 ##  tags: [array]
 
